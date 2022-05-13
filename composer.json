@@ -1,0 +1,37 @@
+{
+    "name": "jetbrains/simulator",
+    "description": "PHP migration simulator",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Shengyou Fan",
+            "email": "shengyoufan@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JetBrains\\PhpUpgradeGuide\\Simulator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JetBrains\\PhpUpgradeGuide\\Simulator\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
