@@ -2,9 +2,9 @@
 
 namespace JetBrains\PhpUpgradeGuide\Simulator\Tests;
 
-use JetBrains\PhpUpgradeGuide\Simulator\Apple;
-use JetBrains\PhpUpgradeGuide\Simulator\Banana;
-use JetBrains\PhpUpgradeGuide\Simulator\ShoppingCart;
+use JetBrains\PhpUpgradeGuide\Simulator\Models\Apple;
+use JetBrains\PhpUpgradeGuide\Simulator\Models\Banana;
+use JetBrains\PhpUpgradeGuide\Simulator\Services\ShoppingCart;
 use PHPUnit\Framework\TestCase;
 
 class ShoppingCartTest extends TestCase
@@ -12,7 +12,7 @@ class ShoppingCartTest extends TestCase
     /**
      * @return void
      */
-    public function testAddTwoProductsInCartWillGetAmountOfTwo()
+    public function testAddTwoProductsInCartWillGetAmountOfTwo(): void
     {
         // Arrange
         $cart = new ShoppingCart();
@@ -24,13 +24,13 @@ class ShoppingCartTest extends TestCase
         $cart->add($banana);
 
         // Assert
-        $this->assertEquals(2, $cart->amout());
+        self::assertEquals(2, $cart->amount());
     }
 
     /**
      * @return void
      */
-    public function testAddPrice100ProductAndPrice50ProductWillReturn150ForTotalPrice()
+    public function testAddPrice100ProductAndPrice50ProductWillReturn150ForTotalPrice(): void
     {
         // Arrange
         $cart = new ShoppingCart();
@@ -42,13 +42,13 @@ class ShoppingCartTest extends TestCase
         $cart->add($banana);
 
         // Assert
-        $this->assertEquals(150.0, $cart->totalPrice());
+        self::assertEquals(150.0, $cart->totalPrice());
     }
 
     /**
      * @return void
      */
-    public function testGetProductListFromCart()
+    public function testGetProductListFromCart(): void
     {
         // Arrange
         $cart = new ShoppingCart();
@@ -60,7 +60,7 @@ class ShoppingCartTest extends TestCase
         $cart->add($banana);
 
         // Assert
-        $this->assertInternalType('array', $cart->getProducts());
-        $this->assertEquals(2, count($cart->getProducts()));
+        self::assertIsArray($cart->getProducts());
+        self::assertCount(2, $cart->getProducts());
     }
 }
